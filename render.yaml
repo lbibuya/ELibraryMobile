@@ -1,16 +1,16 @@
-# Exemple render.yaml — adapter les champs `repo`, `branch` et `plan` à votre compte
-# Voir https://render.com/docs/render-yaml
+# Configuration Render pour ELibraryMobile Backend
+# Documentation : https://render.com/docs/render-yaml
 
 services:
   - type: web
     name: elibrary-backend
     env: docker
-    repo: <votre-repo-github>
+    repo: https://github.com/lbibuya/ELibraryMobile.git
     branch: main
     dockerfilePath: backend/Dockerfile
     plan: free
     autoDeploy: true
-    # si vous utilisez des regions ou des health checks, ajoutez-les ici
 
-# Note : créez la base de données Postgres depuis le tableau de bord Render et ajoutez
-# la variable d'environnement DATABASE_URL dans la configuration du service.
+    envVars:
+      - key: DATABASE_URL
+        sync: false
