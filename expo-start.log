@@ -1,0 +1,11 @@
+
+> e-library-mobile@1.0.0 web
+> expo start --web
+
+Starting project at C:\Users\levis\Downloads\ELibraryMobile\ELibraryMobile
+Starting Metro Bundler
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+Web Bundled 36008ms C:\Users\levis\Downloads\ELibraryMobile\ELibraryMobile\node_modules\expo\AppEntry.js (1727 modules)
+Web Bundled 6570ms C:\Users\levis\Downloads\ELibraryMobile\ELibraryMobile\node_modules\expo\AppEntry.js (1 module)
+Web Bundled 8727ms C:\Users\levis\Downloads\ELibraryMobile\ELibraryMobile\node_modules\expo\AppEntry.js (1 module)

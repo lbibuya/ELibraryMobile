@@ -1,0 +1,73 @@
+export const colors = {
+  teal: {
+    50: '#f0fdfa',
+    100: '#ccfbf1',
+    300: '#5eead4',
+    400: '#2dd4bf',
+    500: '#14b8a6',
+    600: '#0d9488',
+    700: '#0f766e',
+    800: '#115e59',
+    900: '#134e4a',
+    950: '#042f2e',
+  },
+  slate: {
+    50: '#f8fafc',
+    100: '#f1f5f9',
+    200: '#e2e8f0',
+    300: '#cbd5e1',
+    400: '#94a3b8',
+    500: '#64748b',
+    600: '#475569',
+    700: '#334155',
+    800: '#1e293b',
+    900: '#0f172a',
+    950: '#020617',
+  },
+  sky: {
+    50: '#f0f9ff',
+    400: '#38bdf8',
+    600: '#0284c7',
+  },
+  violet: {
+    50: '#f5f3ff',
+    400: '#a78bfa',
+    600: '#7c3aed',
+  },
+  indigo: {
+    50: '#eef2ff',
+    400: '#818cf8',
+    600: '#4f46e5',
+  },
+  amber: {
+    50: '#fffbeb',
+    400: '#fbbf24',
+    600: '#d97706',
+  },
+  emerald: {
+    50: '#ecfdf5',
+    500: '#10b981',
+    600: '#059669',
+  },
+  red: {
+    50: '#fef2f2',
+    500: '#ef4444',
+    600: '#dc2626',
+  },
+  white: '#ffffff',
+  black: '#000000',
+};
+
+export const theme = {
+  background: colors.slate[100],
+  surface: colors.white,
+  surfaceDark: colors.slate[900],
+  border: colors.slate[200],
+  borderDark: colors.slate[800],
+  text: colors.slate[800],
+  textMuted: colors.slate[500],
+  textLight: colors.slate[400],
+  primary: colors.teal[600],
+  primaryLight: colors.teal[50],
+  primaryDark: colors.teal[700],
+};
