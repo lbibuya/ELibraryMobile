@@ -126,4 +126,16 @@ def delete_file(file_id: str, db: Session = Depends(get_db)):
 
 
 @app.get("/api/stats", response_model=Stats)
-def get_stats(db: Session = Depends(get_db)):    # compter fichiers et dossiers    total_files = db.scalar(select(func.count()).select_from(LibraryFile)) or 0    total_folders = db.scalar(select(func.count()).select_from(Folder)) or 0    # calculer l'espace utilisé à partir du champ size (ex: "2.4 MB", "450 KB", "12.3 Mo", ...)    import re    sizes = db.scalars(select(LibraryFile.size)).all() or []    total_bytes = 0    for s in sizes:        if not s:            continue        m = re.search(r"([\d.,]+)\s*(o|b|ko|kb|mo|mb|go|gb)?", s, re.I)        if not m:            continue        try:            num = float(m.group(1).replace(',', '.'))        except Exception:            continue        unit = (m.group(2) or '').lower()        if unit in ('o', 'b'):            total_bytes += num        elif unit in ('ko', 'kb'):            total_bytes += num * 1024        elif unit in ('mo', 'mb'):            total_bytes += num * 1024 ** 2        elif unit in ('go', 'gb'):            total_bytes += num * 1024 ** 3        else:            total_bytes += num    storage_used_gb = round(total_bytes / (1024 ** 3), 1)    return Stats(totalFiles=total_files, totalFolders=total_folders, storageUsed=storage_used_gb, storageLimit=15)
+def get_stats(db: Session = Depends(get_db)):
+    total_files = db.scalar(select(func.count(LibraryFile.id))) or 0
+    total_folders = db.scalar(select(func.count(Folder.id))) or 0
+    storage_used = db.scalar(select(func.sum(LibraryFile.size))) or 0
+
+    storage_used_gb = storage_used / (1024 ** 3)
+
+    return Stats(
+        totalFiles=total_files,
+        totalFolders=total_folders,
+        storageUsed=storage_used_gb,
+        storageLimit=15
+    )
